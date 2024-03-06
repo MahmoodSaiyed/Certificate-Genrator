@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+/* * {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+} */
+
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fafafa;
+} */
+
+/* 72 DPI A4 CSS  */
+.maincertificate {
+    background-color: #ffffff;
+    /* background-color: white; */
+    padding: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 842px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 595px;
+}
+
+.certificate {
+    border: 8px solid #2F75B6;
+    padding: 18px 20px;
+    width: 800px;
+    height: 547px;
+
+}
+
+h1 {
+    margin-bottom: 1rem !important;
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+    font-size: 16px !important;
+    line-height: 150%;
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #2F75B6 !important;
+    width: 56%;
+    margin: 0 auto !important;
+    margin-bottom: 1rem !important;
+    opacity: 1 !important;
+    margin-top: 2px !important;
+}
+
+.signature {
+    margin-top: -25px !important;
+}
+
+p.description {
+    font-size: 15px !important;
+    font-family: "PT Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-top: 2px;
+    margin-bottom: 7px;
+}
+
+
+p.name {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    letter-spacing: 4px !important;
+    /* color: red; */
+    font-weight: 600 !important;
+}
+
+.signature hr {
+    width: 126px !important;
+    margin-bottom: 8px !important;
+}
+
+.signature p.description {
+    line-height: 135%;
+    /* color: red; */
+}
+
+.description {
+    white-space: nowrap;
+}

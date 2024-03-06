@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+    <div class="certificate">
+        <div class="row">
+            <div class="col">
+                <img src="../image/education-2030.svg" width="515" alt="education 2030">
+            </div>
+            <div class="col text-center">
+                <img src="../image/unesco.svg" width="550" alt="unesco">
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="text-center">
+            <img src="../image/cert-participant.svg" width="1500" alt="">
+        </div>
+        <div class="text-center ">
+            <p>This is presented to Student of</p>
+            <h1 class="mb-0">Janki P Odedra</h1>
+        </div>
+        <div class="mt-5">
+            <hr>
+        </div>
+        <div class="text-center">
+            <p class="">School name: Nirma Vidyavihar, Ahmedabad</p>
+            <p class="">Participating in the Ahmedabad's Foundational Trail. On 20 December 2023</p>
+            <p class="">to promote Intangible Cultural Heritage.</p>
+        </div>
+        <div class="row justify-content-center signature">
+            <div class="col-lg-6 col-md-6 text-center">
+                <hr>
+                <p class="mb-0 text-uppercase">TIM CURTIS</p>
+                <p class="mb-0">Director General UNESCO</p>
+            </div>
+            <div class="col-lg-6 col-md-6 text-center">
+                <hr>
+                <p class="mb-0 text-uppercase">PARVEZ MALIK</p>
+                <p class="mb-0">ASPnet Programme Officer</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- const downloadAsPDF = () => {
+    const input = document.getElementById("template1");
+    html2canvas(input, {
+      scale: 3,
+      allowTaint: true,
+      useCORS: true,
+      logging: false,
+      letterRendering: true,
+      width: input.offsetWidth,
+      height: input.offsetHeight,
+      autoPrint: true,
+    }).then(async (canvas) => {
+      // Convert SVG to Canvas using canvg
+      const canvg = await import('canvg');
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.canvas.width = canvas.width;
+      ctx.canvas.height = canvas.height;
+      await canvg(ctx.canvas, canvas.toDataURL('image/svg+xml'), {
+        ignoreMouse: true,
+        ignoreAnimation: true,
+        renderCallback: () => {
+          const imgData = ctx.canvas.toDataURL('image/png');
+  
+          const pdfWidthMm = 210; // A4 width in mm
+          const pdfHeightMm = (pdfWidthMm / canvas.width) * canvas.height; // A4 aspect ratio
+          const pdf = new jsPDF('l', 'mm', [pdfWidthMm, pdfHeightMm]);
+          pdf.addImage(imgData, 'PNG', 0, 0, pdfWidthMm, pdfHeightMm);
+          pdf.save(`${name}_certificate.pdf`);
+        }
+      });
+    });
+  }; -->
