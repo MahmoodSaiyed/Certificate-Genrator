@@ -1,6 +1,6 @@
 
-
-
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 *{
     margin: 0;
@@ -75,10 +75,14 @@
 {
     margin-bottom: -5px;
 }
-.maincontainer{
-    display: flex;
-    height: 90vh;
+.maincontainer {
+  display: flex;
+  flex-direction: column;
 }
+@media screen and (min-width: 768px) {
+  .maincontainer {
+    flex-direction: row;
+  }
 .maincontainer .leftmost{
     flex: 0.20;
     padding: 1rem;
@@ -98,7 +102,7 @@ border-top: 1px solid gray;
     color: #ff6c37;
 }
 .maincontainer .middle{
-    flex: 0.60;
+    flex: 2;
     display: flex;
     height: 610px;
     width: 842px;
@@ -111,7 +115,7 @@ border-top: 1px solid gray;
     
 }
 .maincontainer .right{
-    flex: 0.20;
+    flex: 0.70;
     display: flex;
     justify-content: center;
     height: 610px;
@@ -122,7 +126,7 @@ border-top: 1px solid gray;
     border-top: 1px solid gray;
 
 
-}
+}}
 .generate{
   display: flex;
   justify-content: space-between;
@@ -286,20 +290,20 @@ border-top: 1px solid gray;
 #toggler {
   margin-left: 1rem;
   padding: 5px;
-  background: rgba(255, 108, 55, 0.847);
+  /* background: rgba(255, 108, 55, 0.847); */
   border: none;
   color: white;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: -3px;
   border: navajowhite;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 17px;
   /* padding: 12px 16px; */
   text-align: center;
-  color: rgb(255, 255, 255);
-  background-color: rgb(255, 108, 55) !important;
-  border-color: rgb(255, 108, 55) !important;
-  margin-left: 1rem;
+  color: rgb(249 7 7);
+  /* background-color: rgb(149 185 247) !important; */
+  /* border-color: rgb(255, 108, 55) !important; */
+  margin-left: -14rem;
   text-transform: uppercase;
   cursor: pointer;
   text-decoration: none;
@@ -343,6 +347,10 @@ border-top: 1px solid gray;
     padding: 6px;
     border: 1px solid #00000020;
 }
-
+#label {
+  position: absolute;
+  /* border-radius: 0%; */
+  left: 15rem;
+}
 
 

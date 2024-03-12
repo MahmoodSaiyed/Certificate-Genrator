@@ -9,6 +9,8 @@ import html2canvas from "html2canvas";
 import JSZip from "jszip";
 import Certificate from "./Certificate";
 // import domtoimage from "dom-to-image";
+import { font } from "./AbrilFatface-Regular-normal";
+import { font1 } from "./PT Serif-normal";
 
 export default function Home() {
   const [name, setname] = useState("");
@@ -17,7 +19,7 @@ export default function Home() {
   const [desc2, setdesc2] = useState("");
   // eslint-disable-next-line
   const componentRef = useRef();
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [isChecked, setChecked] = useState(false);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
   // eslint-disable-next-line
@@ -32,12 +34,10 @@ export default function Home() {
     "Abril Fatface",
     "Times New Roman",
     "Helvetica",
-    "Courier New",
+    "Courier",
     "Georgia",
     "Verdana",
-    "Trebuchet MS",
     "Impact",
-    "Palatino",
     "Arial Black",
     "Book Antiqua",
     "PT Serif",
@@ -70,71 +70,47 @@ export default function Home() {
   //     });
   //   };
 
-//   const downloadAsPDF = () => {
-//     // const input = document.getElementById("template1");
-//     const pdfWidthMm = 860; // A4 width in mm
-//     const pdfHeightMm = 635; // A4 height in mm (assuming portrait orientation)
-    
-    
-//     const pdf = new jsPDF({
-//       unit: "mm",
-//       format: [pdfWidthMm, pdfHeightMm], // Custom size to fit content on a single page
-//       orientation: "landscape",
-//     });
-
-//     // Add HTML content to the PDF
-//     pdf.html(componentRef.current, {
-//      callback(pdf){
-//         // Save the PDF with the given name
-//        pdf.save(`${name}_certificate.pdf`);
-//       },
-//       x: 10, // Adjust the position if needed
-//       y: 12.4,
-//       width: pdfWidthMm, // Adjust the width to fit the content
-//     });
-//     // console.log(fontFamily)
-//   };
-
-
-
+  //Download PDF
   const downloadAsPDF = () => {
     // const input = document.getElementById("template1");
-    const pdfWidthMm = 860; // A4 width in mm
-    const pdfHeightMm = 635; // A4 height in mm (assuming portrait orientation)
-    
-    
-  // Define the font family and font size styles
-  const fontFamilyStyle = `font-family: '${fontFamily}'`;
-  const fontSizeStyle = `font-size: ${fontSize}px;`;
+    const pdfWidthMm = 860;
+    const pdfHeightMm = 635;
 
-  // Combine font family and font size styles into a single style attribute
-  const fontStyle = `${fontFamilyStyle} ${fontSizeStyle}`;
+    // Define the font family and font size styles
+    const fontFamilyStyle = `font-family: '${fontFamily}'`;
+    const fontSizeStyle = `font-size: ${fontSize}px;`;
 
-  // Construct HTML content with inline styles
-  const htmlContentWithStyles = `
+    const fontStyle = `${fontFamilyStyle} ${fontSizeStyle}`;
+
+    // Construct HTML content with inline styles
+    const htmlContentWithStyles = `
     <div style="${fontStyle}">
-      <!-- Your HTML content here -->
       ${componentRef.current.innerHTML}
     </div>
   `;
+    // Create jsPDF instance
+    const pdf = new jsPDF({
+      unit: "mm",
+      format: [pdfWidthMm, pdfHeightMm],
+      orientation: "landscape",
+    });
+    pdf.addFileToVFS("Abril Fatface-normal.ttf", font);
+    pdf.addFont("Abril Fatface-normal.ttf", "Abril Fatface", "normal");
+    pdf.setFont("Abril Fatface");
+    pdf.addFileToVFS("PT Serif-normal.ttf", font1);
+    pdf.addFont("PT Serif-normal.ttf", "PT Serif", "normal");
+    pdf.setFont("PT Serif");
 
-  // Create jsPDF instance
-  const pdf = new jsPDF({
-    unit: "mm",
-    format: [pdfWidthMm, pdfHeightMm],
-    orientation: "landscape",
-  });
-
-  // Add HTML content with styles to the PDF
-  pdf.html(htmlContentWithStyles, {
-    callback: (pdf) => {
-      // Save the PDF with the given name
-      pdf.save(`${name}_certificate.pdf`);
-    },
-    x: 10,
-    y: 12.4,
-    width: pdfWidthMm,
-  });
+    // Add HTML content with styles to the PDF
+    pdf.html(htmlContentWithStyles, {
+      callback: (pdf) => {
+        // Save the PDF with the given name
+        pdf.save(`${name}_certificate.pdf`);
+      },
+      x: 10,
+      y: 12.4,
+      width: pdfWidthMm,
+    });
   };
 
   //Dowanload Image
@@ -152,6 +128,7 @@ export default function Home() {
       link.click();
     });
   };
+
   const handleBulkNamesUpload = (e) => handleFileUpload(e, setBulkNamesFile);
 
   const toggleTheme = () => {
@@ -197,6 +174,8 @@ export default function Home() {
   const handleBulkClick = () => {
     document.getElementById("bulkNames").click();
   };
+
+  //fileupload
   const handleFileUpload = (e, setterFunction) => {
     const file = e.target.files[0];
     setterFunction(file);
@@ -291,9 +270,30 @@ export default function Home() {
         }}
       >
         <img src={Logo} alt="" />
-        <button id="toggler" className="my-4" onClick={() => toggleTheme()}>
+        <div
+          class={`form-check form-switch text-${
+            theme === "light" ? "dark" : "light"
+          }`}
+        >
+          <input
+            class="form-check-input"
+            onClick={() => toggleTheme()}
+            type="checkbox"
+            id="toggler"
+            style={{ backgroundColor: theme === "dark" ? "white" : "black" }}
+          />
+          <label
+            class="form-check-label"
+            id="label"
+            for="flexSwitchCheckDefault"
+          >
+            {" "}
+            {theme === "light" ? "Dark Theme" : "Light Theme"}
+          </label>
+        </div>
+        {/* <button id="toggler" className="my-4" onClick={() => toggleTheme()}>
           {theme === "light" ? "Dark Theme" : "Light Theme"}
-        </button>
+        </button> */}
         <h2 style={{ color: theme === "dark" ? "white" : "rgb(28, 39, 43)" }}>
           Certificate Generator
         </h2>
@@ -322,7 +322,8 @@ export default function Home() {
                 }}
               >
                 Particpant Name
-              </span>
+              </span>{" "}
+              <br />
               <input
                 type="text"
                 style={{ width: "200px" }}
@@ -407,11 +408,13 @@ export default function Home() {
                 style={{ width: "200px", height: "40px" }}
                 onChange={(e) => setFontSize(e.target.value)}
               >
-                {["35", "40", "45", "50", "55", "60"].map((font) => (
-                  <option key={font} value={font}>
-                    {font}
-                  </option>
-                ))}
+                {["35", "37", "39", "40", "42", "44", "46", "48", "50"].map(
+                  (font) => (
+                    <option key={font} value={font}>
+                      {font}
+                    </option>
+                  )
+                )}
               </select>
             </div>
             <label
